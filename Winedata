@@ -1,0 +1,40 @@
+setwd('C:/Users/Τάσος/Desktop/ΕΡΓΑΣΙΑ R')
+install.packages('readxl')
+library(tidyverse)
+library(readxl)
+REA
+data <- read_xlsx('winedata.xlsx')   
+data <- as.data.frame(data)
+str(data)
+
+mean(data$`fixed acidity`)
+class(data)
+table(data$quality)
+
+table(data$Type)
+mean(data)
+
+n <- ncol(data)
+means <- 0
+sds <- 0
+medians <-0 
+irs <- 0
+
+
+for (i in seq(1,11)){
+  means[i] <- mean(data[,i])
+  sds[i] <- sd(data[,i])
+  medians[i] <-median(data[,i])
+  irs[i] <- range(data[,i])
+}
+
+table(data$quality)
+table(data$Type)
+names <- 0
+par(mfrow = c(2,2))
+for (i in seq(1,11)){
+  names[i]<- names(data[,i]))
+  hist(data[,i], xlab = names[i])
+}
+data[,12] <- as.factor(data[12])
+boxplot(table(data[,12]))
